@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Rotas de Ônibus</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="theme-toggle">
+    <button id="theme-button"><i class="fas fa-moon"></i></button>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <i class="fas fa-bus"></i>
+        <h1>BusConnect</h1>
+      </div>
+      <p class="tagline">Gerenciador de Rotas Intermunicipais</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="cities-section">
+      <div class="section-header">
+        <h2>Cidades</h2>
+        <button id="add-city-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Nova Cidade</button>
+      </div>
+      
+      <div class="cities-container" id="cities-container">
+        <!-- Cities will be added here dynamically -->
+      </div>
+    </section>
+
+    <section class="routes-section">
+      <div class="section-header">
+        <h2>Rotas</h2>
+        <button id="add-route-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Nova Rota</button>
+      </div>
+
+      <div class="filter-container">
+        <div class="filter-group">
+          <label for="filter-origin">Origem:</label>
+          <select id="filter-origin" class="select-input">
+            <option value="all">Todas as cidades</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filter-destination">Destino:</label>
+          <select id="filter-destination" class="select-input">
+            <option value="all">Todas as cidades</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filter-company">Companhia:</label>
+          <select id="filter-company" class="select-input">
+            <option value="all">Todas as companhias</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="routes-container" id="routes-container">
+        <!-- Routes will be added here dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="add-city-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Adicionar Nova Cidade</h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="add-city-form">
+          <div class="form-group">
+            <label for="city-name">Nome da Cidade:</label>
+            <input type="text" id="city-name" class="text-input" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Adicionar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="add-route-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Adicionar Nova Rota</h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="add-route-form">
+          <div class="form-group">
+            <label for="route-origin">Cidade de Origem:</label>
+            <select id="route-origin" class="select-input" required>
+              <!-- Cities will be added here dynamically -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="route-destination">Cidade de Destino:</label>
+            <select id="route-destination" class="select-input" required>
+              <!-- Cities will be added here dynamically -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="route-company">Companhia:</label>
+            <input type="text" id="route-company" class="text-input" required>
+          </div>
+          <div class="form-group">
+            <label for="route-time">Horário:</label>
+            <input type="time" id="route-time" class="text-input" required>
+          </div>
+          <div class="form-group">
+            <label for="route-price">Preço (R$):</label>
+            <input type="number" id="route-price" class="text-input" min="0" step="0.01" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Adicionar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 BusConnect - Sistema de Gerenciamento de Rotas</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/graph.js"></script>
+  <script type="module" src="js/ui.js"></script>
+  <script type="module" src="js/animations.js"></script>
+</body>
+</html>
